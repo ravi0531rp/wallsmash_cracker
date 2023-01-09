@@ -46,7 +46,9 @@ ocr = PaddleOCR(use_angle_cls=True, lang='en')
 results = []
 
 for idx, f in enumerate(files):
-    im = cv2.imread(f)[50:100, 150:220]
+    im = cv2.imread(f)
+    print(f"The size is {im.shape}")
+    im = im[50:100, 150:220]
     im = cv2.resize(im, (100,100))
 
     result = ocr.ocr(f, cls=True)
